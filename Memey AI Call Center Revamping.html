@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemeyAI Call Center Services</title>
+    <meta name="description" content="Professional call center and customer support solutions for businesses with 24/7 multilingual coverage.">
+    <meta name="keywords" content="call center, customer support, telemarketing, help desk, MemeyAI">
+
+    <link rel="icon" href="Memeyailogo.jpg">
+    <link rel="apple-touch-icon" href="Memeyailogo.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Strichpunkt+Sans:wght@400..900&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #191970; /* midnight blue */
+            --primary-soft: rgba(25, 25, 112, 0.12);
+            --bg: #f3f6ff;
+            --surface: #ffffff;
+            --text: #191970;
+            --muted: #5a6a88;
+            --border: rgba(25, 25, 112, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Strichpunkt Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        .logo img {
+            height: 52px;
+            width: auto;
+            object-fit: cover;
+            border-radius: 0.8rem;
+        }
+
+        .logo .sitename {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin: 0;
+            color: var(--primary);
+        }
+
+        .navmenu ul {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.7rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .navmenu a {
+            color: var(--muted);
+            font-size: 0.95rem;
+            padding: 0.65rem 0.9rem;
+            border-radius: 0.9rem;
+            transition: background 0.25s ease, color 0.25s ease;
+        }
+
+        .navmenu a:hover,
+        .navmenu a.active {
+            color: var(--primary);
+            background: rgba(25, 25, 112, 0.08);
+        }
+
+        /* Highlighted donate button in nav */
+        .navmenu a.donate-btn {
+            background: var(--primary);
+            color: white;
+            padding: 0.45rem 0.9rem;
+            border-radius: 0.85rem;
+            box-shadow: 0 10px 30px rgba(25,25,112,0.12);
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .navmenu a.donate-btn:hover {
+            background: #151d5f;
+            transform: translateY(-3px);
+            box-shadow: 0 16px 40px rgba(25,25,112,0.14);
+        }
+
+        .hero {
+            padding: clamp(4rem, 6vw, 6rem) 0 5rem;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 5vw, 4.4rem);
+            line-height: 0.95;
+            margin: 0 0 1.3rem;
+            color: var(--primary);
+        }
+
+        .hero-title .highlight {
+            color: var(--primary);
+        }
+
+        .hero-copy {
+            max-width: 620px;
+            color: var(--muted);
+            font-size: clamp(1rem, 1.1vw, 1.17rem);
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .hero-buttons .btn {
+            min-width: 170px;
+            border-radius: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-visual img {
+            border-radius: 2rem;
+            box-shadow: 0 30px 90px rgba(25, 25, 112, 0.12);
+            max-width: 560px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: clamp(2rem, 2.4vw, 2.9rem);
+            line-height: 1.05;
+            margin-bottom: 0.95rem;
+            color: var(--primary);
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--muted);
+            font-size: clamp(1rem, 1.1vw, 1.15rem);
+            line-height: 1.8;
+        }
+
+        .services {
+            padding: 5.5rem 0;
+        }
+
+        .services-grid,
+        .pricing-grid,
+        .feature-cards {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .services-grid {
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+
+
+        .service-card,
+        .feature-card,
+        .pricing-plan {
+            background: var(--surface);
+            border-radius: 1.75rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 24px 60px rgba(25, 25, 112, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .service-card:hover,
+        .feature-card:hover,
+        .pricing-plan:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 75px rgba(25, 25, 112, 0.12);
+            border-color: rgba(25, 25, 112, 0.18);
+        }
+
+        .service-badge,
+        .feature-badge {
+            width: 4.8rem;
+            height: 4.8rem;
+            display: grid;
+            place-items: center;
+            border-radius: 1.2rem;
+            margin-bottom: 1.2rem;
+            background: radial-gradient(circle at top left, rgba(25, 25, 112, 0.12), transparent 55%);
+            color: var(--primary);
+            font-size: 1.45rem;
+        }
+
+        .service-card {
+            padding: 2rem;
+            min-height: 340px;
+            text-align: left;
+        }
+
+        .service-card h3,
+        .feature-card h4,
+        .plan-header h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .service-card p,
+        .feature-card p {
+            color: var(--muted);
+            line-height: 1.75;
+            margin-bottom: 0;
+        }
+
+        .features {
+            padding: 6rem 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.9fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .feature-cards {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            padding: 1.8rem;
+        }
+
+        .feature-card strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+
+        .feature-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .feature-image img {
+            border-radius: 2rem;
+            width: min(100%, 540px);
+            box-shadow: 0 32px 90px rgba(25, 25, 112, 0.14);
+        }
+
+        .pricing {
+            padding: 6rem 0;
+        }
+
+        .pricing-grid {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .pricing-plan {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .plan-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, #191970, #2b2f7f);
+            color: white;
+        }
+
+        .plan-header h3 {
+            font-size: 1.45rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .plan-price {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .plan-price span {
+            display: block;
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+            opacity: 0.86;
+        }
+
+        .plan-features {
+            padding: 2rem;
+            margin: 0;
+            list-style: none;
+            flex-grow: 1;
+        }
+
+        .plan-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            padding: 0.9rem 0;
+            color: var(--muted);
+            border-bottom: 1px solid rgba(25, 25, 112, 0.08);
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .plan-footer {
+            padding: 1.8rem;
+        }
+
+        .plan-footer .btn {
+            width: 100%;
+            border-radius: 0.95rem;
+            padding: 0.95rem 1.1rem;
+            font-weight: 700;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #151d5f;
+            border-color: #151d5f;
+        }
+
+        .btn-primary:active {
+            background-color: #0f1547;
+            border-color: #0f1547;
+        }
+
+        .cta-banner {
+            padding: 5.5rem 0;
+            background: linear-gradient(135deg, #191970, #3643a6);
+            color: white;
+        }
+
+        .cta-banner h2 {
+            font-size: clamp(2rem, 3.3vw, 2.8rem);
+            margin-bottom: 1rem;
+        }
+
+        .cta-banner p {
+            color: rgba(255,255,255,0.82);
+            max-width: 660px;
+            margin: 0 auto 1.8rem;
+            line-height: 1.8;
+        }
+
+        .footer {
+            background: #ffffff;
+            color: #5a6a88;
+            padding: 5.5rem 0 2.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer a {
+            color: var(--primary);
+        }
+
+        .footer .footer-links h5,
+        .footer .footer-about h5 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer .footer-links ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .footer .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer .footer-links li a:hover {
+            color: #191970;
+        }
+
+        .footer .social-links {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .footer .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.8rem;
+            height: 2.8rem;
+            border-radius: 0.9rem;
+            background: var(--primary);
+            color: white;
+        }
+
+        .footer .flag-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .footer .flag-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .footer .flag-item img {
+            width: 36px;
+            height: 24px;
+            object-fit: cover;
+            border-radius: 0.35rem;
+        }
+
+        .footer-note {
+            color: #8a94ac;
+            font-size: 0.95rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        #scroll-top {
+            position: fixed;
+            right: 1.5rem;
+            bottom: 1.5rem;
+            display: grid;
+            place-items: center;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 20px 50px rgba(25, 25, 112, 0.18);
+            z-index: 999;
+            transition: transform 0.2s ease;
+        }
+
+        #scroll-top:hover {
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 992px) {
+            .hero-grid,
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navmenu ul {
+                justify-content: flex-start;
+            }
+
+            .hero {
+                padding-top: 3.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navmenu a {
+                padding: 0.55rem 0.75rem;
+            }
+
+            .hero-title {
+                font-size: clamp(2.5rem, 8vw, 3.6rem);
+            }
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <a href="index.html" class="logo">
+            <img src="Memeyailogo.jpg" alt="MemeyAI Logo">
+            <span class="sitename">MemeyAI</span>
+        </a>
+        <nav class="navmenu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="Campaign.html">Campaigns</a></li>
+                <li><a href="Arban.html">Arban TV</a></li>
+                <li><a href="hub.html">Hub</a></li>
+                <li><a href="call-center.html" class="active">Call Center</a></li>
+                <li><a href="library.html">Library</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="https://www.mchanga.africa/fundraiser/121056" target="_blank" class="donate-btn">Donate</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <p class="text-uppercase text-primary small mb-3">Call center & customer support</p>
+                    <h1 class="hero-title">Professional <span class="highlight">Call Centre</span> Services.</h1>
+                    <p class="hero-copy">Deliver exceptional customer experiences with multilingual agents, 24/7 support, smart routing and seamless omnichannel engagement.</p>
+                    <div class="hero-buttons">
+                        <a href="contact.html" class="btn btn-primary btn-lg">Get Started Today</a>
+                        <a href="tel:+254794153677" class="btn btn-outline-primary btn-lg"><i class="bi bi-telephone me-2"></i> +254 794 153677</a>
+                    </div>
+                </div>
+                <div class="hero-visual" data-aos="fade-left">
+                    <img src="download%202.jpeg" alt="Call Center Team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <small>What we deliver</small>
+                <h2>Our Call Center Solutions</h2>
+                <p>Tailored services that help your business stay responsive, efficient, and connected to every customer.</p>
+            </div>
+            <div class="services-grid">
+                <article class="service-card" data-aos="fade-up">
+                    <div class="service-badge"><i class="bi bi-headset"></i></div>
+                    <h3>Inbound Support</h3>
+                    <p>Handle customer inquiries, technical support, order tracking and service desk requests with fast, friendly assistance.</p>
+                </article>
+                <article class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-badge"><i class="bi bi-telephone-outbound"></i></div>
+                    <h3>Outbound Services</h3>
+                    <p>Drive sales, run lead-generation campaigns, customer surveys and appointment booking with expert outreach teams.</p>
+                </article>
+                <article class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-badge"><i class="bi bi-chat-dots"></i></div>
+                    <h3>Multichannel Support</h3>
+                    <p>Provide consistent care across phone, email, chat, social media and WhatsApp Business for seamless customer journeys.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <small>Why partner with us</small>
+                <h2>Call Center Objectives & Focus</h2>
+                <p>We combine technology, local expertise and customer-first processes to help growing businesses outperform expectations.</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-cards">
+                    <article class="feature-card" data-aos="fade-up">
+                        <div class="feature-badge"><i class="bi bi-clock-history"></i></div>
+                        <h4>24/7 Availability</h4>
+                        <p>Always-on coverage to support customers in every time zone and reduce missed opportunities.</p>
+                    </article>
+                    <article class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="feature-badge"><i class="bi bi-translate"></i></div>
+                        <h4>Multilingual Agents</h4>
+                        <p>Highly trained representatives fluent in English, Swahili and additional local languages.</p>
+                    </article>
+                </div>
+
+                <div class="feature-image" data-aos="zoom-in">
+                    <img src="download%201.jpeg" alt="Call Center features">
+                </div>
+
+                <div class="feature-cards">
+                    <article class="feature-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="feature-badge"><i class="bi bi-people-fill"></i></div>
+                        <h4>Multichannel Coverage</h4>
+                        <p>Connect with clients across voice, email, chat and social channels from one dedicated support team.</p>
+                    </article>
+                    <article class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="feature-badge"><i class="bi bi-graph-up-arrow"></i></div>
+                        <h4>Advanced Analytics</h4>
+                        <p>Actionable reporting and performance data help you optimize workflows and improve customer satisfaction.</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="container">
+            <div class="section-title">
+                <small>Flexible plans</small>
+                <h2>Choose the plan that suits your growth</h2>
+                <p>Transparent packages with scalable support so you can expand confidently.</p>
+            </div>
+            <div class="pricing-grid">
+                <article class="pricing-plan" data-aos="fade-up">
+                    <div class="plan-header">
+                        <h3>Basic</h3>
+                        <div class="plan-price">KSH 5,000<span>/month</span></div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="bi bi-check-circle-fill text-primary"></i> 8 hours daily support</li>
+                        <li><i class="bi bi-check-circle-fill text-primary"></i> 2 dedicated agents</li>
+                        <li><i class="bi bi-check-circle-fill text-primary"></i> Email support</li>
+                        <li><i class="bi bi-x-circle-fill text-danger"></i> 24/7 availability</li>
+                        <li><i class="bi bi-x-circle-fill text-danger"></i> Multilingual support</li>
+                    </ul>
+                    <div class="plan-footer">
+                        <a href="contact.html" class="btn btn-primary">Get Started</a>
+                    </div>
+                </article>
+                <article class="pricing-plan" data-aos="fade-up" data-aos-delay="100">
+                    <div class="plan-header">
+                        <h3>Professional</h3>
+                        <div class="plan-price">KSH 15,000<span>/month</span></div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="bi bi-check-circle-fill text-primary"></i> 24/7 customer support</li>
+                        <li><i class="bi bi-check-circle-fill text-primary"></i> 5 dedicated agents</li>
+                        <li><i class="bi bi-check-circle-fill text-primary"></i> Multichannel support</li>
+                        <li><i class="bi bi-check-circle-fill text-primary"></i> Multilingual agents</li>
+                        <li><i class="bi bi-check-circle-fill text-primary"></i> Monthly analytics reports</li>
+                    </ul>
+                    <div class="plan-footer">
+                        <a href="contact.html" class="btn btn-primary">Get Started</a>
+                    </div>
+                </article>
+                <article class="pricing-plan" data-aos="fade-up" data-aos-delay="200">
+                    <div class="plan-header">
+                        <h3>Enterprise</h3>
+                        <div class="plan-price">Custom<span>/month</span></div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="bi bi-check-circle-fill text-primary"></i> Customized solutions</li>
+                        <li><i class="bi bi-check-circle-fill text-primary"></i> Dedicated support team</li>
+                        <li><i class="bi bi-check-circle-fill text-primary"></i> Advanced analytics</li>
+                        <li><i class="bi bi-check-circle-fill text-primary"></i> CRM integration</li>
+                        <li><i class="bi bi-check-circle-fill text-primary"></i> Priority support</li>
+                    </ul>
+                    <div class="plan-footer">
+                        <a href="contact.html" class="btn btn-primary">Contact Sales</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-banner">
+        <div class="container text-center">
+            <h2>Ready to enhance your customer experience?</h2>
+            <p>Speak to our team today and build a call center solution that grows with your business.</p>
+            <a href="contact.html" class="btn btn-light btn-lg">Contact Us Now</a>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row gy-5">
+            <div class="col-lg-4 col-md-6">
+                <h5>MemeyAI</h5>
+                <p>Providing reliable call center and customer support services with a focus on multilingual coverage and 24/7 availability.</p>
+                <div class="social-links">
+                    <a href="https://x.com/MemeyAIOfficial" target="_blank"><i class="bi bi-twitter"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61565001413644#" target="_blank"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/memeyaiofficial/" target="_blank"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/102518929/admin/page-posts/published/" target="_blank"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <h5>Quick links</h5>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5>Contact</h5>
+                <p>Northern Bypass, Thome sq<br>Nairobi, Kenya</p>
+                <p><strong>Phone:</strong> +2547 794 153677</p>
+                <p><strong>Email:</strong> Relations@memeyai.com</p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5>Regional presence</h5>
+                <div class="flag-grid">
+                    <div class="flag-item"><img src="Kenya.jpeg" alt="Kenya"><small>Kenya</small></div>
+                    <div class="flag-item"><img src="Tanzania.jpeg" alt="Tanzania"><small>Tanzania</small></div>
+                    <div class="flag-item"><img src="Rwanda.jpeg" alt="Rwanda"><small>Rwanda</small></div>
+                    <div class="flag-item"><img src="Uganda.jpeg" alt="Uganda"><small>Uganda</small></div>
+                    <div class="flag-item"><img src="Burkina faso.jpeg" alt="Burkina Faso"><small>Burkina Faso</small></div>
+                    <div class="flag-item"><img src="Ivory coast.jpeg" alt="Ivory Coast"><small>Ivory Coast</small></div>
+                    <div class="flag-item"><img src="Senegal.jpeg" alt="Senegal"><small>Senegal</small></div>
+                    <div class="flag-item"><img src="South Africa.jpeg" alt="South Africa"><small>South Africa</small></div>
+                    <div class="flag-item"><img src="Ethiopia.jpeg" alt="Ethiopia"><small>Ethiopia</small></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-note mt-5">
+            <p>
+              © <span>Copyright</span>
+          <strong class="px-1 sitename">MemeyAI</strong>
+          <span>All Rights Reserved</span>
+        </p>
+        </div>
+        <div class="credits"><span>Designed by MemeyAI Digital Solutions</span></div>
+    </div>
+</footer>
+
+<a href="#" id="scroll-top"><i class="bi bi-arrow-up-short"></i></a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 700, once: true });
+</script>
+</body>
+</html>
